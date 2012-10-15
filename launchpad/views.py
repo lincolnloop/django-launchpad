@@ -6,9 +6,7 @@ from django.views.generic.edit import CreateView, ProcessFormView
 
 from jsonit.views import AJAXFormMixin
 
-from . import forms
-from . import models
-from . import signals
+from . import forms, models, signals
 
 class Signup(AJAXFormMixin, CreateView):
     """Signup form and Member creation"""
@@ -30,10 +28,12 @@ class Success(TemplateView):
 class Unsubscribe(TemplateView, ProcessFormView):
     """Unsubscribe from list via signed key"""
     template_name = 'launchpad/unsubscribe.html'
+    model = models.Member
+
     def get_member_for_key(self, key):
         try:
-            return models.Member.objects.get_by_unsubscribe_key(key)
-        except models.Member.DoesNotExist:
+            return self.model.objects.get_by_unsubscribe_key(key)
+        except self.model.DoesNotExist:
             raise http.Http404
 
     def get(self, request, *args, **kwargs):

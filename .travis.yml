@@ -1,0 +1,9 @@
+language: python
+python:
+  - "2.7"
+install:
+  - pip install -e git+https://github.com/lincolnloop/django-jsonit.git#egg=jsonit
+  - pip install . --use-mirrors
+script: django-admin.py test --pythonpath=. --settings=example_settings
+notifications:
+  irc: "irc.freenode.org#lincolnloop"

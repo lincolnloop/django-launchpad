@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>Launchpad Signup</title>
+    <style type="text/css">
+        .message { display: none }
+    </style>
+</head>
+<body>
+    <p class="message success">Success!</p>
+    <p class="message failure">Failure!</p>
+    <!-- Form can handle AJAX submission or traditional POST -->
+    <input type="checkbox" id="use-js"><label for="use-js">Submit via AJAX?</label>
+    <form method="post" action=".">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" />
+    </form>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script>
+        $('form').submit(function (event) {
+            if ($('#use-js:checked').length === 0) {
+                return true
+            }
+            event.preventDefault();
+            $.post(this.action, {
+                email: $('#id_email').val(),
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            function (data) {
+                console.log(data);
+                if (data.success) {
+                    $('.success').show();
+                    $('.failure').hide();
+                } else {
+                    $('.success').hide();
+                    $('.failure').show();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

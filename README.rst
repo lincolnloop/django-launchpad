@@ -1,6 +1,9 @@
 django-launchpad
 ================
 
+.. image:: https://secure.travis-ci.org/lincolnloop/django-launchpad.png
+    :target: http://travis-ci.org/lincolnloop/django-launchpad
+
 A simple application to track mailing list signups and unsubscribes. Useful for pre-launch signup pages.
 
 Installation

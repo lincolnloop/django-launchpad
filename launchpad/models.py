@@ -20,6 +20,9 @@ class Member(models.Model):
     unsubscribed_time = models.DateTimeField(blank=True, null=True)
     objects = MemberManager()
 
+    def __unicode__(self):
+        return self.email
+
     @property
     def unsubscribe_key(self):
         signed = signing.dumps({'email': self.email})

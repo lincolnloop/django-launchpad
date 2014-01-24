@@ -1,6 +1,6 @@
 """Bare-bones settings to test launchpad"""
 import os
-from django.conf.urls.defaults import patterns, include
+from django.conf.urls import patterns, include
 
 directory = os.path.dirname(__file__)
 DATABASES = {

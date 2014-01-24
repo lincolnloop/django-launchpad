@@ -12,6 +12,7 @@ DATABASES = {
 filepath, extension = os.path.splitext(__file__)
 ROOT_URLCONF = os.path.basename(filepath)
 INSTALLED_APPS = ('launchpad',)
+SECRET_KEY = 'test'
 DEBUG=True
 
 urlpatterns = patterns('', (r'', include('launchpad.urls')))

@@ -1,6 +1,6 @@
 """Bare-bones settings to test launchpad"""
 import os
-from django.conf.urls import patterns, include
+from django.conf.urls import include
 
 directory = os.path.dirname(__file__)
 DATABASES = {
@@ -15,4 +15,4 @@ INSTALLED_APPS = ('launchpad',)
 SECRET_KEY = 'test'
 DEBUG=True
 
-urlpatterns = patterns('', (r'', include('launchpad.urls')))
+urlpatterns = [(r'', include('launchpad.urls'))]

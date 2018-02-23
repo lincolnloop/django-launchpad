@@ -1,7 +1,7 @@
 from django import http
 from django.test import TestCase
 from django.test.client import RequestFactory
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from . import models
 from . import views

@@ -1,5 +1,5 @@
 import datetime
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django import http
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, ProcessFormView
